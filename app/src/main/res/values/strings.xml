@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Campus_item_sharing</string>
+    <string name="sr_home">主页</string>
+    <string name="sr_message">消息</string>
+    <string name="sr_setting">设置</string>
+    <string name="sr_account_name">用户名</string>
+    <string name="sr_account_password">密码</string>
+    <string name="sr_login">登录</string>
+    <string name="sr_sign_up">注册</string>
+    <string name="sr_register">没有账号？点击注册</string>
+    <string name="sr_exit_login">退出登录</string>
+    <string name="sr_not_login">未登录</string>
+    <string name="sr_settings">Settings</string>
+    <string name="sr_person_info">个人信息</string>
+    <string name="sr_my_publish">我的发表</string>
+    <string name="sr_my_reply">我的回复</string>
+    <string name="sr_browsing_history">浏览历史</string>
+    <string name="sr_account">Account</string>
+    <string name="sr_change_password">修改密码</string>
+    <string name="sr_log_out">退出登录</string>
+    <string name="sr_deregister_account">注销账号</string>
+    <string name="user_center_login_welcome_text">你好，欢迎加入Campus!</string>
+    <string name="user_center_login_create_text">请创建一个账号</string>
+    <string name="user_center_login_hint_user_number">请输入您的学号</string>
+    <string name="user_center_login_input_text">请输入账号</string>
+    <string name="user_center_login_hint_password_text">请输入密码</string>
+    <string name="user_center_login_exchange_login_text">已有账号？</string>
+    <string name="user_center_login_exchange_sign_text">没有账号？</string>
+    <string name="user_center_password_mention_null">密码不能为空！</string>
+    <string name="user_center_account_mention_null">账号不能为空！</string>
+    <string name="user_center_name_mention_null">用户名不能为空！</string>
+</resources>
