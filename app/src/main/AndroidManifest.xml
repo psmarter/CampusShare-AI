@@ -35,6 +35,18 @@
             android:exported="true"
             android:theme="@style/Theme.Campus_item_sharing" />
 
+        <!-- 声明 PersonalInfoActivity -->
+        <activity
+            android:name=".account.PersonalInfoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
+
+        <!-- 声明 PasswordEditActivity -->
+        <activity
+            android:name=".account.PasswordEditActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
+
     </application>
 
 </manifest>

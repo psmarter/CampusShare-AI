@@ -17,6 +17,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.campus_item_sharing.account.PasswordEditActivity
+import com.example.campus_item_sharing.account.PersonalInfoActivity
 import com.example.campus_item_sharing.retrofit.UserDetails
 
 class SettingsFragment : Fragment() {
@@ -42,7 +44,13 @@ class SettingsFragment : Fragment() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                updateLoginStatus(view) // 更新用户状态
+                // 检查返回的 Intent 中是否包含退出标志
+                val logout = result.data?.getBooleanExtra("logout", false) ?: false
+                if (logout) {
+                    logOut(view) // 调用退出登录函数
+                } else {
+                    updateLoginStatus(view) // 更新用户状态
+                }
             }
         }
 
@@ -170,8 +178,9 @@ class SettingsFragment : Fragment() {
 
     // 跳转到个人信息页面
     private fun navigateToPersonalInfo() {
-        showToast("跳转到个人信息页面")
-        // 实际开发中可以替换为跳转到具体的 Activity 或 Fragment
+        // 创建 Intent 跳转到 PersonalInfoActivity
+        val intent = Intent(requireActivity(), PersonalInfoActivity::class.java)
+        startActivity(intent) // 启动 PersonalInfoActivity
     }
 
     // 跳转到我的发表页面
@@ -186,7 +195,9 @@ class SettingsFragment : Fragment() {
 
     // 跳转到修改密码页面
     private fun navigateToChangePassword() {
-        showToast("跳转到修改密码页面")
+        // 创建 Intent 跳转到 PasswordEditActivity
+        val intent = Intent(requireActivity(), PasswordEditActivity::class.java)
+        loginResultLauncher.launch(intent) // 使用 ActivityResultLauncher 启动
     }
 
     // 执行退出登录逻辑
@@ -293,4 +304,5 @@ class SettingsFragment : Fragment() {
         // 保存头像 URI 到 SharedPreferences
         getSharedPreferencesAvatar().edit().putString("avatar_${getUserData().account}", uri.toString()).apply()
     }
+
 }

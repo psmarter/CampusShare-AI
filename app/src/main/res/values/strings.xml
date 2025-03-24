@@ -4,6 +4,7 @@
     <string name="sr_message">消息</string>
     <string name="sr_setting">设置</string>
     <string name="sr_account_name">用户名</string>
+    <string name="sr_account_email">邮箱</string>
     <string name="sr_account_password">密码</string>
     <string name="sr_login">登录</string>
     <string name="sr_sign_up">注册</string>
@@ -29,4 +30,14 @@
     <string name="user_center_password_mention_null">密码不能为空！</string>
     <string name="user_center_account_mention_null">账号不能为空！</string>
     <string name="user_center_name_mention_null">用户名不能为空！</string>
+    <string name="user_center_home_edit_msg">编辑资料</string>
+    <string name="save">保存</string>
+    <string name="user_center_edit_psw_origin_hint">请输入原始密码</string>
+    <string name="user_center_edit_psw_new_hint">请输入新密码</string>
+    <string name="user_center_edit_psw_new_hint_again">请再次确认密码</string>
+    <string name="user_center_hint_student_number">学号</string>
+    <string name="user_center_hint_student_account">账户</string>
+    <string name="user_center_hint_student_email">邮箱</string>
+    <string name="confirm">确认</string>
+
 </resources>

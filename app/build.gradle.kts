@@ -59,7 +59,8 @@ dependencies {
 
     // ConstraintLayout and Material Design
     implementation(libs.androidx.constraintlayout) // ConstraintLayout
-    implementation(libs.material) // Material Design Components
+    implementation(libs.material)
+    implementation(libs.androidx.cardview) // Material Design Components
 
     // Testing dependencies
     testImplementation(libs.junit) // Unit testing with JUnit
