@@ -56,4 +56,5 @@
     <string name="post_negotiable">面议</string>
     <string name="post_confirm_publish">确定发布</string>
     <string name="post_description">请简单说明您的物品名称</string>
+    <string name="add_friend">添加好友</string>
 </resources>

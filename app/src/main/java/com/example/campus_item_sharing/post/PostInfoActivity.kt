@@ -1,0 +1,123 @@
+package com.example.campus_item_sharing.post
+
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Bundle
+import android.util.Base64
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.campus_item_sharing.R
+
+class PostInfoActivity : AppCompatActivity(){
+    private lateinit var btnBack: ImageView
+    private lateinit var tagAll: TextView
+    private lateinit var tagBooks: TextView
+    private lateinit var tagElectronics: TextView
+    private lateinit var tagSports: TextView
+
+    private lateinit var priceInput: EditText
+    private lateinit var accountName: EditText
+    private lateinit var contactName: EditText
+    private lateinit var contactNumber: EditText
+    private lateinit var categorySpinner: EditText // Assuming it's an EditText
+    private lateinit var postDescription: EditText
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.post_item_info)
+
+        // 从 SharedPreferences 获取保存的数据
+        val sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
+
+        val description = sharedPreferences.getString("description", "默认描述")
+        val accountNameText = sharedPreferences.getString("accountName", "默认账户名")
+        val itemType = sharedPreferences.getString("itemType", "默认物品类型")
+        val price = sharedPreferences.getString("price", "0.0")
+        val contactNameText = sharedPreferences.getString("contactName", "默认联系人姓名")
+        val contactNumberText = sharedPreferences.getString("contactNumber", "默认联系人号码")
+        val tags = sharedPreferences.getString("tags", "")
+        val imageData = sharedPreferences.getString("imageData", "")
+
+
+        btnBack = findViewById(R.id.btn_login_back)
+
+        // 使 EditText 不可编辑
+        accountName = findViewById<EditText>(R.id.account_name).apply {
+            setText(accountNameText)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+        categorySpinner = findViewById<EditText>(R.id.category_spinner).apply {
+            setText(itemType)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+        priceInput = findViewById<EditText>(R.id.price_input).apply {
+            setText(price)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+        contactName = findViewById<EditText>(R.id.contact_name).apply {
+            setText(contactNameText)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+        contactNumber = findViewById<EditText>(R.id.contact_number).apply {
+            setText(contactNumberText)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+        postDescription = findViewById<EditText>(R.id.post_description).apply {
+            setText(description)
+            isEnabled = false // 将 EditText 设置为不可编辑
+        }
+
+        tagAll = findViewById(R.id.tag_all)
+        tagBooks = findViewById(R.id.tag_books)
+        tagElectronics = findViewById(R.id.tag_electronics)
+        tagSports = findViewById(R.id.tag_sports)
+
+        btnBack.setOnClickListener { finish() }
+
+        // 将 imageData 解码为 Bitmap，并设置到 ImageView
+        val imageView: ImageView = findViewById(R.id.upload_image)
+        if (!imageData.isNullOrEmpty()) {
+            val bitmap = decodeBase64ToBitmap(imageData)
+            if (bitmap != null) {
+                imageView.setImageBitmap(bitmap) // 将 Bitmap 设置到 ImageView
+            } else {
+                imageView.setImageResource(R.drawable.ic_avatar) // 使用默认图片
+            }
+        } else {
+            imageView.setImageResource(R.drawable.ic_avatar) // 使用默认图片
+        }
+
+        highlightSelectedTag(tags)
+    }
+
+    // 将 Base64 字符串解码为 Bitmap 的辅助方法
+    private fun decodeBase64ToBitmap(base64Str: String): Bitmap? {
+        return try {
+            val decodedString = Base64.decode(base64Str, Base64.DEFAULT)
+            BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    private fun highlightSelectedTag(tag: String?) {
+        when (tag) {
+            "全部" -> highlightTag(tagAll)
+            "书籍" -> highlightTag(tagBooks)
+            "电子设备" -> highlightTag(tagElectronics)
+            "体育" -> highlightTag(tagSports)
+        }
+    }
+
+    private fun highlightTag(tag: TextView) {
+        tag.isSelected = true // Set the tag as selected
+        tag.setBackgroundResource(R.drawable.tag_background) // Use your selector drawable
+        tag.setTextColor(ContextCompat.getColor(this, R.color.white)) // Change text color for visibility
+    }
+
+
+}

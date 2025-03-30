@@ -60,6 +60,11 @@
             android:exported="true"
             android:theme="@style/Theme.Campus_item_sharing" />
 
+        <!-- 声明 PostInfoActivity -->
+        <activity
+            android:name=".post.PostInfoActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
 
     </application>
 

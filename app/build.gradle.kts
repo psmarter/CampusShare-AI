@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout) // ConstraintLayout
     implementation(libs.material)
     implementation(libs.androidx.cardview)
+    implementation(libs.androidx.swiperefreshlayout)
 
     // Testing dependencies
     testImplementation(libs.junit) // Unit testing with JUnit
