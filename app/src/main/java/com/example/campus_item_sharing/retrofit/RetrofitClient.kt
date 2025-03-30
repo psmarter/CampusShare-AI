@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private const val BASE_URL = "https://a071-113-54-150-202.ngrok-free.app/" // 本地服务器地址，10.0.2.2 是 Android 模拟器的本地地址
+    private const val BASE_URL = "https://00d5-240c-c983-5-d28d-50d1-3057-825c-cff0.ngrok-free.app/" // 本地服务器地址，10.0.2.2 是 Android 模拟器的本地地址
 
     // 日志拦截器，用于调试网络请求
     private val loggingInterceptor = HttpLoggingInterceptor().apply {

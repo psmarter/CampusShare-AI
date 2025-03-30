@@ -60,7 +60,7 @@ dependencies {
     // ConstraintLayout and Material Design
     implementation(libs.androidx.constraintlayout) // ConstraintLayout
     implementation(libs.material)
-    implementation(libs.androidx.cardview) // Material Design Components
+    implementation(libs.androidx.cardview)
 
     // Testing dependencies
     testImplementation(libs.junit) // Unit testing with JUnit
@@ -74,4 +74,8 @@ dependencies {
     // Optional: OkHttp for logging (if needed)
     implementation(libs.logging.interceptor) // Logging for debugging HTTP requests
 
+    implementation(libs.glide)
+    annotationProcessor(libs.glide.compiler) // Glide Compiler
+
+    implementation(libs.material)
 }

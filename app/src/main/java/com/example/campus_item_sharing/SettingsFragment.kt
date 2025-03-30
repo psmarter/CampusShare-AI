@@ -19,7 +19,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.campus_item_sharing.account.PasswordEditActivity
 import com.example.campus_item_sharing.account.PersonalInfoActivity
+import com.example.campus_item_sharing.retrofit.ResponseModel
+import com.example.campus_item_sharing.retrofit.RetrofitClient
 import com.example.campus_item_sharing.retrofit.UserDetails
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SettingsFragment : Fragment() {
 
@@ -222,13 +227,36 @@ class SettingsFragment : Fragment() {
 
     // 执行注销账号逻辑
     private fun deregisterAccount() {
-        // 示例：注销账号逻辑
-        getSharedPreferences().edit().clear().apply()
-        getSharedPreferencesAvatar().edit().clear().apply()
+        val accountToDelete = getUserData().account // 获取当前账号的函数
 
         // 执行删除请求
-        showToast("账号已注销")
-        navigateToLogin() // 注销后跳转到登录界面
+        RetrofitClient.apiService.deleteUser(accountToDelete).enqueue(object : Callback<ResponseModel> {
+            override fun onResponse(call: Call<ResponseModel>, response: Response<ResponseModel>) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        if (responseBody.status == "success") {
+                            // 注销账号逻辑
+                            getSharedPreferences().edit().clear().apply()
+                            getSharedPreferencesAvatar().edit().clear().apply()
+
+                            showToast("账号已注销")
+                            navigateToLogin() // 注销后跳转到登录界面
+                        } else {
+                            showToast("注销失败：${responseBody.message}")
+                        }
+                    } else {
+                        showToast("注销失败：响应为空")
+                    }
+                } else {
+                    showToast("注销失败：${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseModel>, t: Throwable) {
+                showToast("网络错误：${t.message}")
+            }
+        })
     }
 
     // 获取 SharedPreferences

@@ -17,4 +17,9 @@
     <color name="light_blue1">#2196F3</color>
     <color name="colorEnabled">#FF6200EE</color> <!-- 可用时的颜色 -->
     <color name="colorDisabled">#BDBDBD</color>  <!-- 不可用时的颜色 -->
+    <color name="dark_gray">#A9A9A9</color>
+    <color name="colorPressed">#FFBB86FC</color>   <!-- 按压状态的颜色 -->
+    <color name="colorSelected">#FF6200EE</color>   <!-- 选中状态的颜色 -->
+    <color name="colorDefault">#D3D3D3</color>      <!-- 默认状态的颜色 -->
+
 </resources>

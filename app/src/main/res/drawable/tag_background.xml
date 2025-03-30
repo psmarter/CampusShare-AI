@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorPressed" /> <!-- 按压状态的颜色 -->
+            <corners android:radius="24dp" /> <!-- 圆角 -->
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/light_blue1" /> <!-- 选中状态的颜色 -->
+            <corners android:radius="24dp" /> <!-- 圆角 -->
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorDefault" /> <!-- 默认状态的颜色 -->
+            <corners android:radius="24dp" /> <!-- 圆角 -->
+        </shape>
+    </item>
+</selector>

@@ -39,5 +39,21 @@
     <string name="user_center_hint_student_account">账户</string>
     <string name="user_center_hint_student_email">邮箱</string>
     <string name="confirm">确认</string>
-
+    <string name="add">添加</string>
+    <string name="view_all">全部</string>
+    <string name="view_book">书籍</string>
+    <string name="view_digital">电子设备</string>
+    <string name="view_sport">体育</string>
+    <string name="post_category">分类</string>
+    <string name="post_price">价格</string>
+    <string name="post_input_price">请输入价格</string>
+    <string name="post_contact_person">联系人</string>
+    <string name="post_your_name">你的名字</string>
+    <string name="post_phone_number">联系电话</string>
+    <string name="post_input_your_phone_number">请输入你的手机号</string>
+    <string name="post_label">标签</string>
+    <string name="post_image_upload">图片上传</string>
+    <string name="post_negotiable">面议</string>
+    <string name="post_confirm_publish">确定发布</string>
+    <string name="post_description">请简单说明您的物品名称</string>
 </resources>
