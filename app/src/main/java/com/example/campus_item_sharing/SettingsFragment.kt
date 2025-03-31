@@ -202,7 +202,14 @@ class SettingsFragment : Fragment() {
 
     // 跳转到浏览历史页面
     private fun navigateToBrowsingHistory() {
-        showToast("跳转到浏览历史页面")
+        // 创建 PostFragment 实例
+        val postHistory = PostHistory()
+
+        // 进行 Fragment 的替换
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, postHistory) // R.id.fragment_container 为您外部容器的 ID
+            .addToBackStack(null) // 将此操作添加至回退栈
+            .commit() // 提交事务
     }
 
     // 跳转到修改密码页面

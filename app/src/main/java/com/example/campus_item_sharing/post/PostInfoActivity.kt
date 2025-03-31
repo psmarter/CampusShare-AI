@@ -1,5 +1,7 @@
 package com.example.campus_item_sharing.post
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -10,6 +12,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.campus_item_sharing.R
+import com.example.campus_item_sharing.retrofit.ItemDetails
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class PostInfoActivity : AppCompatActivity(){
     private lateinit var btnBack: ImageView
@@ -24,6 +29,8 @@ class PostInfoActivity : AppCompatActivity(){
     private lateinit var contactNumber: EditText
     private lateinit var categorySpinner: EditText // Assuming it's an EditText
     private lateinit var postDescription: EditText
+
+    private val gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +47,7 @@ class PostInfoActivity : AppCompatActivity(){
         val contactNumberText = sharedPreferences.getString("contactNumber", "默认联系人号码")
         val tags = sharedPreferences.getString("tags", "")
         val imageData = sharedPreferences.getString("imageData", "")
+        val imageUniqueId = sharedPreferences.getString("imageUniqueId", "默认ID")
 
 
         btnBack = findViewById(R.id.btn_login_back)
@@ -91,6 +99,34 @@ class PostInfoActivity : AppCompatActivity(){
         }
 
         highlightSelectedTag(tags)
+
+        // 保存新项目数据
+        if (price != null) {
+            saveItemData(sharedPreferences, ItemDetails(accountNameText.toString(), itemType.toString(), price.toDouble(), contactNameText.toString(), contactNumberText.toString(), tags.toString(), imageData.toString(), imageUniqueId.toString(), description.toString()))
+        }
+    }
+
+    @SuppressLint("MutatingSharedPrefs")
+    private fun saveItemData(sharedPreferences: SharedPreferences, newItem: ItemDetails) {
+        val editor = sharedPreferences.edit()
+
+        // 读取现有的项目列表
+        val existingItemsJson = sharedPreferences.getString("items", "[]") ?: "[]"
+        val itemListType = object : TypeToken<MutableList<ItemDetails>>() {}.type
+        val itemList: MutableList<ItemDetails> = gson.fromJson(existingItemsJson, itemListType)
+
+        // 检查是否存在重复的唯一ID
+        val existingItem = itemList.find { it.imageUniqueId == newItem.imageUniqueId }
+        if (existingItem != null) {
+            // 如果存在，根据唯一ID移除
+            itemList.remove(existingItem)
+        }
+
+        // 保存新项
+        itemList.add(newItem)
+        val updatedItemsJson = gson.toJson(itemList)
+        editor.putString("items", updatedItemsJson) // 更新项目列表
+        editor.apply() // 提交更改
     }
 
     // 将 Base64 字符串解码为 Bitmap 的辅助方法
