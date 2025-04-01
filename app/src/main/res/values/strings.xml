@@ -57,4 +57,9 @@
     <string name="post_confirm_publish">确定发布</string>
     <string name="post_description">请简单说明您的物品名称</string>
     <string name="add_friend">添加好友</string>
+    <string name="my_friend">我的好友</string>
+    <string name="chat_hint">请输入信息</string>
+    <string name="send">发送</string>
+    <string name="send_message">发送消息</string>
+    <string name="received_message">收到消息</string>>
 </resources>

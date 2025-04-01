@@ -1,18 +1,24 @@
 package com.example.campus_item_sharing.post
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Base64
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.campus_item_sharing.R
 import com.example.campus_item_sharing.retrofit.ItemDetails
+import com.example.campus_item_sharing.retrofit.ResponseModel
+import com.example.campus_item_sharing.retrofit.RetrofitClient
+import com.example.campus_item_sharing.retrofit.UserDetails
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -22,6 +28,7 @@ class PostInfoActivity : AppCompatActivity(){
     private lateinit var tagBooks: TextView
     private lateinit var tagElectronics: TextView
     private lateinit var tagSports: TextView
+    private lateinit var addMyFriendButton: Button // 添加好友按钮
 
     private lateinit var priceInput: EditText
     private lateinit var accountName: EditText
@@ -51,6 +58,7 @@ class PostInfoActivity : AppCompatActivity(){
 
 
         btnBack = findViewById(R.id.btn_login_back)
+        addMyFriendButton = findViewById(R.id.add_my_friend)
 
         // 使 EditText 不可编辑
         accountName = findViewById<EditText>(R.id.account_name).apply {
@@ -104,6 +112,59 @@ class PostInfoActivity : AppCompatActivity(){
         if (price != null) {
             saveItemData(sharedPreferences, ItemDetails(accountNameText.toString(), itemType.toString(), price.toDouble(), contactNameText.toString(), contactNumberText.toString(), tags.toString(), imageData.toString(), imageUniqueId.toString(), description.toString()))
         }
+
+        // 点击添加好友按钮的事件处理
+        addMyFriendButton.setOnClickListener {
+            if (accountNameText.isNullOrEmpty()) {
+                Toast.makeText(this, "目标好友账户名为空", Toast.LENGTH_SHORT).show()
+            } else {
+                saveFriendData(getUserData().account, accountNameText)
+            }
+        }
+    }
+
+    private fun saveFriendData(accountName: String?, friendAccount: String?) {
+        // 判断账户名是否为空
+        if (accountName.isNullOrEmpty() || friendAccount.isNullOrEmpty()) {
+            Toast.makeText(this, "账户名不能为空", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // 调用 Retrofit 接口，发起添加好友请求
+        RetrofitClient.apiService.addFriend(accountName, friendAccount)
+            .enqueue(object : retrofit2.Callback<ResponseModel> {
+                override fun onResponse(
+                    call: retrofit2.Call<ResponseModel>,
+                    response: retrofit2.Response<ResponseModel>
+                ) {
+                    if (response.isSuccessful) {
+                        val resp = response.body()
+                        if (resp != null && resp.status == "success") {
+                            Toast.makeText(this@PostInfoActivity, "好友添加成功", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(
+                                this@PostInfoActivity,
+                                resp?.message ?: "添加好友失败",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        Toast.makeText(
+                            this@PostInfoActivity,
+                            "添加好友失败：" + response.message(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: retrofit2.Call<ResponseModel>, t: Throwable) {
+                    Toast.makeText(
+                        this@PostInfoActivity,
+                        "网络错误：" + t.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
     }
 
     @SuppressLint("MutatingSharedPrefs")
@@ -155,5 +216,29 @@ class PostInfoActivity : AppCompatActivity(){
         tag.setTextColor(ContextCompat.getColor(this, R.color.white)) // Change text color for visibility
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 
+    // 读取用户信息的方法
+    private fun getUserData(): UserDetails {
+        val sharedPreferences = getSharedPreferences()
+        val studentNumber = sharedPreferences.getString("studentNumber", null)
+        val account = sharedPreferences.getString("account", null)
+        val passwordHash = sharedPreferences.getString("passwordHash", null)
+        val email = sharedPreferences.getString("email", null)
+
+        // 处理空值的情况
+        return UserDetails(
+            studentNumber ?: "未设置",
+            account ?: "未设置",
+            passwordHash ?: "未设置",
+            email ?: "未设置"
+        )
+    }
+
+    // 获取 SharedPreferences
+    private fun getSharedPreferences(): SharedPreferences {
+        return getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    }
 }

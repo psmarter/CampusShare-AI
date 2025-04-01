@@ -114,7 +114,7 @@
             android:padding="10dp" />
 
         <Button
-            android:id="@+id/offer_radio_button"
+            android:id="@+id/add_my_friend"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"

@@ -191,19 +191,6 @@ class HomeFragment : Fragment() {
         })
     }
 
-    // 可以添加方法来动态添加或删除项目
-    fun addItem(item: ItemDetails) {
-        itemList.add(item)
-        itemAdapter.notifyItemInserted(itemList.size - 1) // 通知适配器数据已更改
-    }
-
-    fun removeItem(position: Int) {
-        if (position >= 0 && position < itemList.size) {
-            itemList.removeAt(position) // 从列表中删除项
-            itemAdapter.notifyItemRemoved(position) // 通知适配器数据已更改
-        }
-    }
-
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
