@@ -67,4 +67,5 @@
     <string name="loading_text">加载中...</string>
     <string name="no_result">未生成结果</string>
     <string name="error_message">生成过程中发生错误</string>
+    <string name="Gemini">Gemini</string>
 </resources>

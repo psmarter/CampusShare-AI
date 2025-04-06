@@ -3,6 +3,7 @@ package com.example.campus_item_sharing
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -17,6 +18,7 @@ class GeminiActivity : AppCompatActivity() {
     private lateinit var promptEditText: EditText
     private lateinit var generateButton: Button
     private lateinit var resultTextView: TextView
+    private lateinit var btnBack: ImageView
 
     // 隐含提示，不在界面上展示
     private var hiddenAIPrompt: String? = null
@@ -33,6 +35,11 @@ class GeminiActivity : AppCompatActivity() {
         promptEditText = findViewById(R.id.promptEditText)
         generateButton = findViewById(R.id.generateButton)
         resultTextView = findViewById(R.id.resultTextView)
+        btnBack = findViewById(R.id.user_message_home_back)
+
+        btnBack.setOnClickListener {
+            finish()
+        }
 
         // 从 Intent 中获取隐含提示，但不显示在编辑框中
         hiddenAIPrompt = intent.getStringExtra("ai_prompt")
