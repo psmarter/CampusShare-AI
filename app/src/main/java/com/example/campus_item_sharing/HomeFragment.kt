@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -48,6 +49,21 @@ class HomeFragment : Fragment() {
         categorySpinner = view.findViewById(R.id.top_school_selector)
         recyclerView = view.findViewById(R.id.recyclerView)
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout) // 初始化 SwipeRefreshLayout
+
+        // 初始化 SearchView，并设置点击监听器
+        val searchView: SearchView = view.findViewById(R.id.search_bar)
+        searchView.setOnClickListener {
+            // 组合 itemList1 中每个物品的信息作为提示文本
+            // 此处将 accountName、itemType、price、tags、description 拼接为一个字符串
+            val prompt = itemList1.joinToString(separator = "\n") { item ->
+                "Seller: ${item.accountName}, Type: ${item.itemType}, Price: ${item.price}, " +
+                        "Tags: ${item.tags}, Description: ${item.description}"
+            }
+            // 启动 GeminiActivity，并将 prompt 传入
+            val intent = Intent(requireContext(), GeminiActivity::class.java)
+            intent.putExtra("ai_prompt", prompt)
+            startActivity(intent)
+        }
 
         // 创建一个字符串数组
         val categories = arrayOf("电子科技大学", "清华大学", "北京大学")

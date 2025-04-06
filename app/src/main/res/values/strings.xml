@@ -62,4 +62,9 @@
     <string name="send">发送</string>
     <string name="send_message">发送消息</string>
     <string name="received_message">收到消息</string>>
+    <string name="gemini_hint">请输入提示内容</string>
+    <string name="gemini_generate">生成</string>
+    <string name="loading_text">加载中...</string>
+    <string name="no_result">未生成结果</string>
+    <string name="error_message">生成过程中发生错误</string>
 </resources>
