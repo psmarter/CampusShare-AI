@@ -78,6 +78,12 @@
             android:exported="true"
             android:theme="@style/Theme.Campus_item_sharing" />
 
+        <!-- 声明 WebActivity -->
+        <activity
+            android:name=".function.WebActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
+
     </application>
 
 </manifest>

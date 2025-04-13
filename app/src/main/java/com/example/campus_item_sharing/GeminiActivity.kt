@@ -52,7 +52,7 @@ class GeminiActivity : AppCompatActivity() {
                 val finalPrompt = if (hiddenAIPrompt.isNullOrEmpty()) {
                     userInput
                 } else {
-                    "$hiddenAIPrompt\n对你的要求：请根据上述内容，进行你认为合理的推荐，并给出accountName、itemType、price、tags、description等信息，注意用户提问的标签，如果他想要一本书籍，其推荐的物品tags必须为书籍。请求：$userInput"
+                    "$hiddenAIPrompt\n对你的要求：请根据上述内容，进行你认为合理的推荐，并给出accountName、itemType、price、tags、description等信息，注意用户提问的标签，如果他想要一本书籍，其推荐的物品tags必须为书籍，采用中文回答和沟通。请求：$userInput"
                 }
                 generateText(finalPrompt)
             }

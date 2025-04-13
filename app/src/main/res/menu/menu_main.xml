@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_official_website"
+        android:title="@string/office_website"
+        android:icon="@drawable/ic_office_website"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_access_control"
+        android:title="@string/door_lock"
+        android:icon="@drawable/ic_access_door"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_storage_object"
+        android:title="@string/object_share"
+        android:icon="@drawable/ic_object_share"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_deep_seek"
+        android:title="@string/deep_seek"
+        android:icon="@drawable/ic_deepseek"
+        app:showAsAction="never" />
+</menu>

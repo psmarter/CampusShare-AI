@@ -68,4 +68,8 @@
     <string name="no_result">未生成结果</string>
     <string name="error_message">生成过程中发生错误</string>
     <string name="Gemini">Gemini</string>
+    <string name="office_website">电科官网</string>
+    <string name="door_lock">门禁解锁</string>
+    <string name="object_share">课表查询</string>
+    <string name="deep_seek">成电Seek</string>
 </resources>

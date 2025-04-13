@@ -5,18 +5,24 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.campus_item_sharing.function.WebActivity
 import com.example.campus_item_sharing.itemmodel.ItemAdapter
 import com.example.campus_item_sharing.post.PostActivity
 import com.example.campus_item_sharing.post.PostInfoActivity
@@ -43,6 +49,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+        setHasOptionsMenu(true)
 
         // 初始化 FloatingActionButton，并设置点击事件
         val fab: FloatingActionButton = view.findViewById(R.id.fab) // 获取FAB
@@ -114,8 +121,55 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        // 设置当前 Fragment 的 Toolbar 为 ActionBar
+        val toolbar: Toolbar = view.findViewById(R.id.toolbar)
+        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+
         // 单独调用一次“全部”
         selectAllCategory()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu) // menu_main.xml 即为你定义的菜单项
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_official_website -> {
+                //Toast.makeText(requireContext(), "点击了：官网", Toast.LENGTH_SHORT).show()
+
+                // 跳转到电科官网 通过浏览器
+//                val intent = Intent(Intent.ACTION_VIEW)
+//                intent.data = android.net.Uri.parse("https://www.uestc.edu.cn/")
+//                startActivity(intent)
+
+                // 通过内置webview
+                val intent = Intent(requireContext(), WebActivity::class.java)
+                intent.putExtra("web_url", "https://www.uestc.edu.cn/")
+                startActivity(intent)
+                true
+            }
+            R.id.menu_access_control -> {
+                Toast.makeText(requireContext(), "点击了：门禁", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.menu_storage_object -> {
+                Toast.makeText(requireContext(), "点击了：储物共享", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.menu_deep_seek -> {
+                val intent = Intent(requireContext(), WebActivity::class.java)
+                intent.putExtra(
+                    "web_url",
+                    "https://idas.uestc.edu.cn/authserver/login?service=https://chat.uestc.edu.cn/unifiedlogin/v1/cas/login?redirect_url=/terminator/electronic/chat"
+                )
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun setupCategoryClickListeners(view: View) {
