@@ -72,4 +72,5 @@
     <string name="door_lock">门禁解锁</string>
     <string name="object_share">课表查询</string>
     <string name="deep_seek">成电Seek</string>
+    <string name="campus_card">校园卡服务</string>
 </resources>

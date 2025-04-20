@@ -21,4 +21,10 @@
         android:title="@string/deep_seek"
         android:icon="@drawable/ic_deepseek"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_campus_card"
+        android:title="@string/campus_card"
+        android:icon="@drawable/ic_campus_card"
+        app:showAsAction="never" />
 </menu>

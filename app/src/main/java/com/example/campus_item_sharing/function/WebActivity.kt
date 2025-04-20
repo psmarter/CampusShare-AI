@@ -2,28 +2,73 @@ package com.example.campus_item_sharing.function
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.webkit.WebChromeClient
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.example.campus_item_sharing.R
 
 class WebActivity : AppCompatActivity() {
 
-    @SuppressLint("SetJavaScriptEnabled", "MissingInflatedId") // 允许 JS
+    private lateinit var webView: WebView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var toolbar: Toolbar
+
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web)
 
-        val webView: WebView = findViewById(R.id.web_view)
+        // 初始化控件
+        toolbar = findViewById(R.id.web_toolbar)
+        progressBar = findViewById(R.id.web_progress)
+        webView = findViewById(R.id.web_view)
 
-        // 启用 JavaScript
-        webView.settings.javaScriptEnabled = true
+        // 设置 Toolbar 为标题栏
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        // 启用 JS 与 DOM Storage
+        val settings: WebSettings = webView.settings
+        settings.javaScriptEnabled = true
+        settings.domStorageEnabled = true
+
+        // 设置 WebView 加载行为
         webView.webViewClient = WebViewClient()
-        webView.webChromeClient = WebChromeClient()
 
-        // 获取 URL
+        webView.webChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(view: WebView?, newProgress: Int) {
+                if (newProgress < 100) {
+                    progressBar.visibility = View.VISIBLE
+                    progressBar.progress = newProgress
+                } else {
+                    progressBar.visibility = View.GONE
+                }
+            }
+
+            override fun onReceivedTitle(view: WebView?, title: String?) {
+                super.onReceivedTitle(view, title)
+                supportActionBar?.title = title
+            }
+        }
+
+        // 加载网页
         val url = intent.getStringExtra("web_url") ?: "https://www.uestc.edu.cn/"
         webView.loadUrl(url)
+    }
+
+    override fun onBackPressed() {
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }

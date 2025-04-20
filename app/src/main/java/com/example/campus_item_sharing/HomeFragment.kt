@@ -130,8 +130,15 @@ class HomeFragment : Fragment() {
         selectAllCategory()
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_main, menu) // menu_main.xml 即为你定义的菜单项
+
+        // 显示菜单图标
+        if (menu is androidx.appcompat.view.menu.MenuBuilder) {
+            menu.setOptionalIconsVisible(true)
+        }
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -166,6 +173,15 @@ class HomeFragment : Fragment() {
                     "https://idas.uestc.edu.cn/authserver/login?service=https://chat.uestc.edu.cn/unifiedlogin/v1/cas/login?redirect_url=/terminator/electronic/chat"
                 )
                 startActivity(intent)
+                true
+            }
+            R.id.menu_campus_card -> {
+//                val intent = Intent(requireContext(), WebActivity::class.java)
+//                intent.putExtra(
+//                    "web_url",
+//                    "https://idas.uestc.edu.cn/authserver/login?service=https://ecard.uestc.edu.cn/app"
+//                )
+//                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
