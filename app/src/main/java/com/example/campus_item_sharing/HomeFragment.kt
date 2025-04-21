@@ -185,6 +185,8 @@ class HomeFragment : Fragment() {
 //                    "https://idas.uestc.edu.cn/authserver/login?service=https://ecard.uestc.edu.cn/app"
 //                )
 //                startActivity(intent)
+                val intent = Intent(requireContext(), ScanActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)

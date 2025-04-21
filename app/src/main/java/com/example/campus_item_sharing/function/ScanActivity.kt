@@ -3,6 +3,7 @@ package com.example.campus_item_sharing.function
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -93,9 +94,18 @@ class ScanActivity : AppCompatActivity() {
                     if (!hasScanned) {
                         hasScanned = true
                         barcode.rawValue?.let {
-                            val intent = Intent(this, WebActivity::class.java)
-                            intent.putExtra("web_url", it)
-                            startActivity(intent)
+//                            val intent = Intent(this, WebActivity::class.java)
+//                            intent.putExtra("web_url", it)
+//                            startActivity(intent)
+//                            finish()
+                            val uri = Uri.parse(it)
+                            val intent = Intent(Intent.ACTION_VIEW, uri)
+                            intent.setPackage("com.tencent.mm") // 强制用微信打开
+                            if (intent.resolveActivity(packageManager) != null) {
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(this, "未安装微信，无法打开链接", Toast.LENGTH_SHORT).show()
+                            }
                             finish()
                         }
                     }
