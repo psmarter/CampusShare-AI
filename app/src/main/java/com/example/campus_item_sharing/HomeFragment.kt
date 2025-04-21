@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.campus_item_sharing.function.CalendarActivity
 import com.example.campus_item_sharing.function.WebActivity
 import com.example.campus_item_sharing.itemmodel.ItemAdapter
 import com.example.campus_item_sharing.post.PostActivity
@@ -171,8 +172,10 @@ class HomeFragment : Fragment() {
                 startActivity(intent)
                 true
             }
-            R.id.menu_storage_object -> {
-                Toast.makeText(requireContext(), "点击了：储物共享", Toast.LENGTH_SHORT).show()
+            R.id.menu_timetable_query -> {
+//                Toast.makeText(requireContext(), "点击了：课表查询", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), CalendarActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.menu_deep_seek -> {

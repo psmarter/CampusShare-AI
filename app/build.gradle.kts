@@ -93,4 +93,8 @@ dependencies {
     implementation(libs.zxing.android)
     implementation(libs.guava)
 
+    implementation(libs.biweekly)
+    //implementation(libs.weekview)
+    //implementation(libs.weekview.core)
+    implementation(libs.weekview.core)
 }

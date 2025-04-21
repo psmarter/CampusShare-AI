@@ -11,7 +11,7 @@
         android:icon="@drawable/ic_access_door"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_storage_object"
+        android:id="@+id/menu_timetable_query"
         android:title="@string/object_share"
         android:icon="@drawable/ic_object_share"
         app:showAsAction="never" />

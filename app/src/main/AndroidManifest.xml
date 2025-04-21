@@ -90,6 +90,12 @@
             android:exported="true"
             android:theme="@style/Theme.Campus_item_sharing" />
 
+        <!-- 声明 CalendarActivity -->
+        <activity
+            android:name=".function.CalendarActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
+
     </application>
 
 </manifest>
