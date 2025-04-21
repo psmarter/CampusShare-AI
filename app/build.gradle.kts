@@ -38,6 +38,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        viewBinding = true
     }
 }
 
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.firebase.firestore.ktx)
 
     // Testing dependencies
     testImplementation(libs.junit) // Unit testing with JUnit
@@ -82,4 +84,13 @@ dependencies {
 
     implementation(libs.material)
     implementation(libs.generativeai)
+
+    implementation(libs.mlkit.barcode)
+    implementation(libs.camera.core)
+    implementation(libs.camera.camera2)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
+    implementation(libs.zxing.android)
+    implementation(libs.guava)
+
 }

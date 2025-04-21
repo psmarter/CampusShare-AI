@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.campus_item_sharing.function.ScanActivity
 import com.example.campus_item_sharing.function.WebActivity
 import com.example.campus_item_sharing.itemmodel.ItemAdapter
 import com.example.campus_item_sharing.post.PostActivity
@@ -159,7 +160,9 @@ class HomeFragment : Fragment() {
                 true
             }
             R.id.menu_access_control -> {
-                Toast.makeText(requireContext(), "点击了：门禁", Toast.LENGTH_SHORT).show()
+                // Toast.makeText(requireContext(), "点击了：门禁", Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireContext(), ScanActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.menu_storage_object -> {

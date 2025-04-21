@@ -84,6 +84,12 @@
             android:exported="true"
             android:theme="@style/Theme.Campus_item_sharing" />
 
+        <!-- 声明 ScanActivity -->
+        <activity
+            android:name=".function.ScanActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Campus_item_sharing" />
+
     </application>
 
 </manifest>
