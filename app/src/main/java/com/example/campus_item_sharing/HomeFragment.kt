@@ -2,6 +2,7 @@ package com.example.campus_item_sharing
 
 
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,7 +23,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.campus_item_sharing.function.ScanActivity
 import com.example.campus_item_sharing.function.WebActivity
 import com.example.campus_item_sharing.itemmodel.ItemAdapter
 import com.example.campus_item_sharing.post.PostActivity
@@ -161,7 +161,13 @@ class HomeFragment : Fragment() {
             }
             R.id.menu_access_control -> {
                 // Toast.makeText(requireContext(), "点击了：门禁", Toast.LENGTH_SHORT).show()
-                val intent = Intent(requireContext(), ScanActivity::class.java)
+//                val intent = Intent(requireContext(), ScanActivity::class.java)
+//                startActivity(intent)
+                val intent = Intent()
+                intent.component = ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI")
+                intent.putExtra("LauncherUI.Shortcut.LaunchType", "launch_type_scan_qrcode")
+                intent.action = Intent.ACTION_VIEW
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 true
             }
@@ -185,7 +191,11 @@ class HomeFragment : Fragment() {
 //                    "https://idas.uestc.edu.cn/authserver/login?service=https://ecard.uestc.edu.cn/app"
 //                )
 //                startActivity(intent)
-                val intent = Intent(requireContext(), ScanActivity::class.java)
+                val intent = Intent()
+                intent.component = ComponentName("com.tencent.mm", "com.tencent.mm.ui.LauncherUI")
+                intent.putExtra("LauncherUI.Shortcut.LaunchType", "launch_type_scan_qrcode")
+                intent.action = Intent.ACTION_VIEW
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(intent)
                 true
             }
