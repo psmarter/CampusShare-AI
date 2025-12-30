@@ -12,7 +12,7 @@
 
 #### 🐛 报告 Bug
 
-1. 确保 Bug 未被报告过，检查 [Issues](https://github.com/psmarter/Campus/issues)
+1. 确保 Bug 未被报告过，检查 [Issues](https://github.com/psmarter/CampusShare-AI/issues)
 2. 创建新 Issue，使用 Bug Report 模板
 3. 详细描述问题，包括：
    - 设备型号和 Android 版本
@@ -22,7 +22,7 @@
 
 #### 💡 提出新功能
 
-1. 检查 [Issues](https://github.com/psmarter/Campus/issues) 确保功能未被提出
+1. 检查 [Issues](https://github.com/psmarter/CampusShare-AI/issues) 确保功能未被提出
 2. 创建 Feature Request Issue
 3. 详细描述：
    - 功能的用途和价值
@@ -140,7 +140,7 @@ app/src/main/java/com/example/campus_item_sharing/
 
 ### 需要帮助？
 
-- 📧 创建 [Issue](https://github.com/psmarter/Campus/issues) 提问
+- 📧 创建 [Issue](https://github.com/psmarter/CampusShare-AI/issues) 提问
 - 💬 在 Pull Request 中讨论
 - 📖 查看项目 [README](README.md)
 
@@ -154,7 +154,7 @@ Thank you for your interest in the Campus Item Sharing project! We welcome contr
 
 #### 🐛 Report Bugs
 
-1. Check if the bug has been reported in [Issues](https://github.com/psmarter/Campus/issues)
+1. Check if the bug has been reported in [Issues](https://github.com/psmarter/CampusShare-AI/issues)
 2. Create a new Issue using the Bug Report template
 3. Provide detailed information:
    - Device model and Android version
@@ -164,7 +164,7 @@ Thank you for your interest in the Campus Item Sharing project! We welcome contr
 
 #### 💡 Suggest Features
 
-1. Check [Issues](https://github.com/psmarter/Campus/issues) to avoid duplicates
+1. Check [Issues](https://github.com/psmarter/CampusShare-AI/issues) to avoid duplicates
 2. Create a Feature Request Issue
 3. Describe in detail:
    - Purpose and value of the feature
@@ -176,7 +176,7 @@ Thank you for your interest in the Campus Item Sharing project! We welcome contr
 1. **Fork the Repository**
 
    ```bash
-   git clone https://github.com/your-username/Campus.git
+   git clone https://github.com/your-username/CampusShare-AI.git
    cd Campus
    ```
 
@@ -282,7 +282,7 @@ Before submitting a PR, ensure:
 
 ### Need Help?
 
-- 📧 Create an [Issue](https://github.com/psmarter/Campus/issues) to ask questions
+- 📧 Create an [Issue](https://github.com/psmarter/CampusShare-AI/issues) to ask questions
 - 💬 Discuss in Pull Requests
 - 📖 Check the project [README](README.md)
 

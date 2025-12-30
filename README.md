@@ -99,7 +99,7 @@ Campus Item Sharing 是一个专为大学生设计的智能物品共享平台。
 1. **克隆仓库**
 
    ```bash
-   git clone https://github.com/psmarter/Campus.git
+   git clone https://github.com/psmarter/CampusShare-AI.git
    cd Campus
    ```
 
@@ -234,7 +234,7 @@ AI 会返回：
 ### 📞 联系方式
 
 - GitHub: [@psmarter](https://github.com/psmarter)
-- Project Link: [https://github.com/psmarter/Campus](https://github.com/psmarter/Campus)
+- Project Link: [https://github.com/psmarter/CampusShare-AI](https://github.com/psmarter/CampusShare-AI)
 
 ### 🙏 致谢
 
@@ -325,7 +325,7 @@ Campus Item Sharing is an intelligent item-sharing platform designed for college
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/psmarter/Campus.git
+   git clone https://github.com/psmarter/CampusShare-AI.git
    cd Campus
    ```
 
@@ -460,7 +460,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### 📞 Contact
 
 - GitHub: [@psmarter](https://github.com/psmarter)
-- Project Link: [https://github.com/psmarter/Campus](https://github.com/psmarter/Campus)
+- Project Link: [https://github.com/psmarter/CampusShare-AI](https://github.com/psmarter/CampusShare-AI)
 
 ### 🙏 Acknowledgments
 
