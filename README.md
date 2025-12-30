@@ -18,6 +18,35 @@
 
 ---
 
+## 🔗 相关仓库 / Related Repositories
+
+> **本项目是 Campus Item Sharing Platform 的 Android 前端应用**  
+> **This is the Android frontend for Campus Item Sharing Platform**
+
+### 📦 完整项目组成 / Complete Project Components
+
+| 组件 Component | 仓库 Repository | 技术栈 Tech Stack | 说明 Description |
+|---------------|----------------|------------------|-----------------|
+| **🎨 前端 Frontend** | [CampusShare-AI](https://github.com/psmarter/CampusShare-AI) **(当前仓库 Current)** | Android (Kotlin) + Gemini AI | Mobile Application |
+| **⚙️ 后端 Backend** | [Campus_Spring_boot](https://github.com/psmarter/Campus_Spring_boot) | Spring Boot + MySQL | RESTful API Server |
+
+### 🚀 完整部署指南 / Full Deployment Guide
+
+#### 📱 仅前端开发 / Frontend Only
+
+按照下方的 [快速开始](#-快速开始--quick-start) 指南即可。
+
+#### 🔧 前后端联调 / Full-Stack Development
+
+1. ✅ 部署后端服务：按照 [后端仓库说明](https://github.com/psmarter/Campus_Spring_boot) 启动 Spring Boot API
+2. ✅ 配置前端 API 地址（见下方 [后端 API 配置](#-后端-api-配置--backend-api-configuration)）
+3. ✅ 运行 Android 应用
+
+> **💡 开发者提示 / Developer Tip**:  
+> 查看详细的后端对接文档：[BACKEND_API.md](./docs/BACKEND_API.md)
+
+---
+
 ## 中文
 
 ### 📱 项目简介
@@ -84,6 +113,28 @@ Campus Item Sharing 是一个专为大学生设计的智能物品共享平台。
 | **Glide** | 图片加载和缓存 | Latest |
 | **CameraX** | 相机功能 | Latest |
 | **ML Kit** | 二维码扫描 | Latest |
+
+### 🌐 后端 API 配置 / Backend API Configuration
+
+本应用需要连接后端 API 服务器才能完整运行。后端提供用户认证、物品管理、聊天等核心功能。  
+This app requires connection to the backend API server for full functionality. The backend provides user authentication, item management, chat, and other core features.
+
+#### 后端仓库 / Backend Repository
+
+**Spring Boot API**: [Campus_Spring_boot](https://github.com/psmarter/Campus_Spring_boot)
+
+#### API 地址配置 / API URL Configuration
+
+**开发环境 / Development**:
+
+- Android 模拟器 / Emulator: `http://10.0.2.2:8080`
+- 真机调试 / Physical Device: `http://YOUR_LOCAL_IP:8080` (替换为你电脑的IP)
+
+**生产环境 / Production**:
+
+- 部署后端到云服务器后的 HTTPS 地址
+
+> **📖 详细配置指南**: 查看 [docs/BACKEND_API.md](./docs/BACKEND_API.md) 获取完整的后端对接文档
 
 ### 📥 快速开始 / Quick Start
 
