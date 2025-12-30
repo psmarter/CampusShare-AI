@@ -1,0 +1,19 @@
+# local.properties.example
+# 本地配置示例文件 / Local configuration example file
+# 
+# 使用说明 / Instructions:
+# 1. 复制此文件并重命名为 local.properties
+#    Copy this file and rename it to local.properties
+# 2. 填入您的真实API密钥
+#    Fill in your actual API keys
+# 3. local.properties 已被添加到 .gitignore，不会被提交到GitHub
+#    local.properties is in .gitignore and won't be committed to GitHub
+
+## SDK Location (Android Studio auto-generated)
+## This is usually auto-filled, you don't need to modify it
+sdk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk
+
+## Gemini API Key
+## Get your API key from: https://aistudio.google.com/app/apikey
+## 从以下地址获取您的API密钥: https://aistudio.google.com/app/apikey
+GEMINI_API_KEY=your_api_key_here

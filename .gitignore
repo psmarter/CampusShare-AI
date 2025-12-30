@@ -1,6 +1,5 @@
 *.iml
 .gradle
-/local.properties
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
@@ -12,4 +11,25 @@
 /captures
 .externalNativeBuild
 .cxx
+
+# Local configuration containing API keys and secrets
+# 包含API密钥和敏感信息的本地配置文件
 local.properties
+
+# Android Studio generated files
+# Android Studio 生成的文件
+*.iml
+.gradle/
+.idea/
+
+# Build outputs
+# 编译输出
+/build
+/app/build
+*.apk
+*.ap_
+*.aab
+
+# Screenshots for documentation (optional, remove if you want to commit them)
+# 文档截图（可选，如果想要提交截图请删除此行）
+# screenshots/
